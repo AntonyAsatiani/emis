@@ -35,6 +35,7 @@ Route::prefix('user')->group(function (){
 	Route::Get('/profile', 'User\UserController@profile');
 	Route::Get('/image', 'User\UserController@image');
 	Route::Get('/category', 'User\CategoryController@index');
+	Route::Post('/addcategorypost', 'User\CategoryController@AddCategoryPost');
 	Route::Get('/addcategory', 'User\CategoryController@addcategory');
 	Route::Get('/editcategory', 'User\CategoryController@editcategory');
 	Route::Get('/addresource', 'User\ResourceController@addresource');
