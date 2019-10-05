@@ -17,7 +17,10 @@
 
 Route::get('/', 'MainController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+//Auth::routes(['verify' => true]);
+
+
 
 Route::Get('/home', 'HomeController@index')->name('home');
 
