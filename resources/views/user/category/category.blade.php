@@ -15,14 +15,16 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($Category as $item)
+
                 <tr>
-                    <td>კატეგორია 1</td>
+                    <td>{{$item->title}}</td>
                     <td>
-                        <a href="{{url('user/editcategory')}}"><i class="fa fa-edit"></i></a>
-                        <a href=""><i class="fa fa-trash"></i></a>
+                        <a href="{{url('user/editcategory',$item->id)}}"><i class="fa fa-edit"></i></a>
+                        <a href="{{url('user/deletecategory',$item->id)}}"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
-                
+                @endforeach
             </tbody>
         </table>
     </main>

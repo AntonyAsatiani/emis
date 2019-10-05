@@ -27,22 +27,4 @@ class UserController extends Controller
     	return view('user/image');
     }
 
-   //  public function AddCategoryPost(Request $request){
-        
-   //      $Validate = $request->validate([
-   //          'title' => 'required|unique|string'
-   //      ]);
-
-   //      echo "123";
-   //      //if($Validate->fail());
-        
-   //      $Category = new Category;
-        
-   //      $Category->title = $request->title;
-
-   //      $Category->save();
-   // }
-    public function test(){
-        echo "Done"
-    }
 }

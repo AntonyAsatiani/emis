@@ -9,30 +9,56 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
    public function Index(){
-   	return View('user/category/category');
+   	$Category = Category::all();  
+   	return View('user/category/category', compact('Category'));
    }
 
    public function AddCategory(){
+
    	return View('user/category/addcategory');
    }
 
-   public function AddCategoryPost(Request $request){
+   public function AddCategoryPost(Request $Request){
    		
 
-   		$Validate = $request->validate([
+   		$Validate = $Request->validate([
    			'title' => 'required|unique:categories|string'
    		]);
 
    		$Category = new Category;
    		
-   		$Category->title = $request->title;
+   		$Category->title = $Request->title;
 
    		$Category->save();
 
    		return redirect('user/category');
    }
 
-   public function EditCategory(){
-   	return View('user/category/editcategory');
+   public function EditCategory($ID){
+
+   		$Category = Category::findOrFail($ID);
+   	
+   		return View('user/category/editcategory',compact('Category'));
+   }
+
+   public function EditCategoryPost(Request $request, $ID){
+   		$Validate = $request->validate([
+   			'title' => 'required|unique:categories|string'
+   		]);
+
+   	   	$Category = Category::findOrFail($ID);
+	
+   		$Category->update($request->all());
+   		return redirect('user/category');
+
+   }
+
+   public function DeleteCategory($ID){
+
+   		$Category = Category::findOrFail($ID);
+   	
+   		$Category->delete();
+	
+		return redirect('user/category');
    }
 }
